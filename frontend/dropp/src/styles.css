@@ -1,0 +1,7 @@
+@import "tailwindcss";
+@layer theme {
+  :root {
+    --color-dropp-orange: #FF5C28;
+    --color-dropp-dark: #0F0F0F;
+  }
+}
