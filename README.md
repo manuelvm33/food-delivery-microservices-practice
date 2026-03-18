@@ -1,8 +1,5 @@
 # food-delivery-microservices-practice
 🎓 Microservices food delivery platform - Practice project implementing Spring Boot, Angular, Jenkins CI/CD, Docker
-# Food Delivery Microservices Practice
-
-> 🎓 Educational project implementing a food delivery platform using microservices architecture
 
 ## 📋 About
 
