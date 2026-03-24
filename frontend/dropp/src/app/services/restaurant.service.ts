@@ -8,7 +8,7 @@ import { environment } from '../../environments/environment';
   providedIn: 'root',
 })
 export class RestaurantService {
-  private readonly apiUrl = environment.api.restaurant + '/fetchAllRestaurants';
+  private readonly apiUrl = environment.api.restaurant + '/restaurant/fetchAllRestaurants';
 
   constructor(private http: HttpClient) { 
     

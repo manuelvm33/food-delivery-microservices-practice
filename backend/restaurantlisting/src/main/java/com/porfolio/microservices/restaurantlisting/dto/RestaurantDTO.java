@@ -13,4 +13,6 @@ public class RestaurantDTO {
     private String address;
     private String city;
     private String restaurantDescription;
+    private String imageUrl;
+    private Double rating;
 }
