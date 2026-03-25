@@ -4,22 +4,21 @@ import com.porfolio.microservices.restaurantlisting.dto.RestaurantDTO;
 import com.porfolio.microservices.restaurantlisting.entity.Restaurant;
 import com.porfolio.microservices.restaurantlisting.repo.RestaurantRepo;
 import mapper.RestaurantMapper;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class RestaurantService {
-    @Autowired
-    RestaurantRepo restaurantRepo;
+    private final RestaurantRepo restaurantRepo;
 
-    public List<RestaurantDTO> fetchAllRestaurants() {
-        List<Restaurant> restaurants = restaurantRepo.findAll();
-        return restaurants.stream().map(RestaurantMapper.
-                INSTANCE::mapRestaurantToRestaurantDTO).collect(Collectors.toList());
+    public RestaurantService(RestaurantRepo restaurantRepo){
+        this.restaurantRepo = restaurantRepo;
+    }
+
+    public Page<RestaurantDTO> fetchRestaurants(int page, int size) {
+        PageRequest pageRequest = PageRequest.of(page, size);
+        return restaurantRepo.findAll(pageRequest).map(RestaurantMapper.INSTANCE::mapRestaurantToRestaurantDTO);
     }
 
     public RestaurantDTO addRestaurant(RestaurantDTO restaurantDTO) {

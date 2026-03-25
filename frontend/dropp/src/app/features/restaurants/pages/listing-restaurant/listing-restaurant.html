@@ -1,0 +1,38 @@
+<section aria-labelledby="restaurants-heading" class="px-6 py-8">
+    <h2 id="restaurants-heading" class="mb-6 text-3xl font-bold tracking-tight text-heading">
+        Restaurants available
+    </h2>
+
+    @if (loading()) {
+    <div class="grid gap-6">
+        @for (item of [1,2,3,4]; track item) {
+        <div class="animate-pulse bg-neutral-primary-soft border border-default rounded-base shadow-xs overflow-hidden">
+
+            <div class="w-full h-52 bg-gray-300"></div>
+
+            <div class="p-6 space-y-4">
+                <div class="h-6 bg-gray-300 rounded w-3/4"></div>
+                <div class="h-4 bg-gray-200 rounded w-1/2"></div>
+
+                <div class="flex gap-1">
+                    @for (star of [1,2,3,4,5]; track star) {
+                    <div class="w-5 h-5 bg-gray-300 rounded"></div>
+                    }
+                </div>
+            </div>
+
+        </div>
+        }
+    </div>
+    } @else {
+    <div class="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+        @for (restaurant of listRestaurants().content; track restaurant.id) {
+        <app-restaurant-card [restaurant]="restaurant"></app-restaurant-card>
+        }
+    </div>
+    }
+</section>
+<nav aria-label="pagination" class="px-6 py-2">
+    <app-pagination [page]="page()" [pageSize]="pageSize()" [totalPages]="listRestaurants().totalPages"
+        (pageChange)="onPageChange($event)" (pageSizeChange)="onPageSizeChange($event)"></app-pagination>
+</nav>

@@ -2,7 +2,7 @@ package com.porfolio.microservices.restaurantlisting.controlller;
 
 import com.porfolio.microservices.restaurantlisting.dto.RestaurantDTO;
 import com.porfolio.microservices.restaurantlisting.service.RestaurantService;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,23 +10,28 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
 
 @RestController
 @RequestMapping("/restaurant")
 @CrossOrigin
 public class RestaurantController {
 
-    @Autowired
-    RestaurantService restaurantService;
+    private final RestaurantService restaurantService;
 
-    @GetMapping("fetchAllRestaurants")
-    public ResponseEntity<List<RestaurantDTO>> fetchAllRestaurants() {
-        List<RestaurantDTO> allRestaurants = restaurantService.fetchAllRestaurants();
+    public RestaurantController(RestaurantService restaurantService){
+        this.restaurantService = restaurantService;
+    }
+
+    @GetMapping("fetchRestaurants")
+    public ResponseEntity<Page<RestaurantDTO>> fetchAllRestaurants(@RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size) {
+        Page<RestaurantDTO> allRestaurants = restaurantService.fetchRestaurants(page, size);
         return ResponseEntity.ok(allRestaurants);
     }
+
     @PostMapping("/addRestaurant")
     public ResponseEntity<RestaurantDTO> addRestaurant(@RequestBody RestaurantDTO restaurantDTO) {
         RestaurantDTO savedRestaurant = restaurantService.addRestaurant(restaurantDTO);
