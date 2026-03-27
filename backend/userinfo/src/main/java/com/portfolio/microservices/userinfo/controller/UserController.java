@@ -2,7 +2,6 @@ package com.portfolio.microservices.userinfo.controller;
 
 import com.portfolio.microservices.userinfo.dto.UserDto;
 import com.portfolio.microservices.userinfo.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,8 +13,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/user")
 public class UserController {
-    @Autowired
+
     UserService userService;
+
+    private UserController(UserService userService){
+        this.userService = userService;
+    }
 
     @PostMapping("addUser")
     public ResponseEntity<UserDto> addUser(@RequestBody UserDto userDto){

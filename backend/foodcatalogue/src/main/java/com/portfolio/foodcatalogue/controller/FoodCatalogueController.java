@@ -3,7 +3,6 @@ package com.portfolio.foodcatalogue.controller;
 import com.portfolio.foodcatalogue.dto.FoodCataloguePage;
 import com.portfolio.foodcatalogue.dto.FoodItemDTO;
 import com.portfolio.foodcatalogue.service.FoodCatalogueService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,8 +15,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/foodcatalogue")
 public class FoodCatalogueController {
-    @Autowired
     private FoodCatalogueService foodCatalogueService;
+
+    public FoodCatalogueController(FoodCatalogueService foodCatalogueService){
+        this.foodCatalogueService = foodCatalogueService;
+    }
 
     @PostMapping("/addFoodItem")
     public ResponseEntity<FoodItemDTO> addFoodItem(@RequestBody FoodItemDTO foodItemDTO) {

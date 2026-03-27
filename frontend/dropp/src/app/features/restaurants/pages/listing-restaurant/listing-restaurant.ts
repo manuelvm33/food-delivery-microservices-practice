@@ -1,11 +1,11 @@
 import { Component, computed, inject, OnInit, signal } from '@angular/core';
-import { Restaurant } from '../../models/restaurant.interface';
+import { Restaurant } from '../../models/restaurant.model';
 import { Router } from '@angular/router';
 import { toObservable, toSignal } from '@angular/core/rxjs-interop';
 import { finalize, switchMap } from 'rxjs';
 import { RestaurantService } from '../../../../core/services/restaurant.service';
 import { RestaurantCard } from "../../components/restaurant-card/restaurant-card";
-import { PageResponse } from '../../../../shared/components/models/page-response.interface';
+import { PageResponse } from '../../../../shared/components/models/page-response.model';
 import { Pagination } from '../../../../shared/components/pagination/pagination';
 
 @Component({
@@ -27,21 +27,21 @@ export class ListingRestaurant {
   readonly loading = signal<boolean>(true);
   readonly listRestaurants = toSignal(
     toObservable(this.queryParams).pipe(
-      switchMap(({page, pageSize}) => {
+      switchMap(({ page, pageSize }) => {
         return this.restaurantService.getRestaurants(page, pageSize).pipe(
           finalize(() => this.loading.set(false))
         )
       })
-    ), 
+    ),
     {
-      initialValue: 
-      {
-        content: [],
-        totalPages: 0,
-        totalElements: 0,
-        size: 0,
-        number: 0
-      } as PageResponse<Restaurant>
+      initialValue:
+        {
+          content: [],
+          totalPages: 0,
+          totalElements: 0,
+          size: 0,
+          number: 0
+        } as PageResponse<Restaurant>
     });
 
   onPageChange($event: number) {

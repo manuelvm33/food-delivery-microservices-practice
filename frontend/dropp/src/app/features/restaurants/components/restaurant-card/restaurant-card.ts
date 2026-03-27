@@ -1,5 +1,5 @@
 import { Component, Input, inject } from '@angular/core';
-import { Restaurant } from '../../models/restaurant.interface';
+import { Restaurant } from '../../models/restaurant.model';
 import { Router } from '@angular/router';
 
 @Component({

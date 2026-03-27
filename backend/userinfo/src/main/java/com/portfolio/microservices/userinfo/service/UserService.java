@@ -4,13 +4,15 @@ import com.portfolio.microservices.userinfo.dto.UserDto;
 import com.portfolio.microservices.userinfo.entity.User;
 import com.portfolio.microservices.userinfo.mapper.UserMapper;
 import com.portfolio.microservices.userinfo.repo.UserRepo;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class UserService {
-    @Autowired
-    UserRepo userRepo;
+    private UserRepo userRepo;
+
+    public UserService(UserRepo userRepo){
+        this.userRepo = userRepo;
+    }
 
     public UserDto addUser(UserDto userDto){
         User savedUser = userRepo.save(UserMapper.INSTANCE.mapUserDtoToUser(userDto));

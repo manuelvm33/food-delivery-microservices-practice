@@ -3,8 +3,8 @@ import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http'
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
-import { PageResponse } from '../../shared/components/models/page-response.interface';
-import { Restaurant } from '../../features/restaurants/models/restaurant.interface';
+import { PageResponse } from '../../shared/components/models/page-response.model';
+import { Restaurant } from '../../features/restaurants/models/restaurant.model';
 
 @Injectable({
   providedIn: 'root',
@@ -19,9 +19,9 @@ export class RestaurantService {
       .set('page', page)
       .set('pageSize', pageSize);
     return this.http.get<PageResponse<Restaurant>>(`${this.apiUrl}`, { params })
-    .pipe(
-      catchError(this.handleError)
-    );
+      .pipe(
+        catchError(this.handleError)
+      );
   }
 
   private handleError(error: HttpErrorResponse): Observable<never> {

@@ -6,18 +6,22 @@ import com.porflio.order.dto.UserDto;
 import com.porflio.order.entity.Order;
 import com.porflio.order.mapper.OrderMapper;
 import com.porflio.order.repo.OrderRepo;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 @Service
 public class OrderService {
-    @Autowired
     private OrderRepo orderRepo;
-    @Autowired
+
     private SequenceGenerator sequenceGenerator;
-    @Autowired
+
     private RestTemplate restTemplate;
+
+    public OrderService(OrderRepo orderRepo, SequenceGenerator sequenceGenerator, RestTemplate restTemplate){
+        this.orderRepo = orderRepo;
+        this.sequenceGenerator = sequenceGenerator;
+        this.restTemplate = restTemplate;
+    }
     public OrderDto saveOrder(OrderFrontDto orderFrontDto) {
         Long orderId = sequenceGenerator.generateNextOrderId();
         UserDto userDto = fetchDetailsFromUserId(orderFrontDto.getUserId());
