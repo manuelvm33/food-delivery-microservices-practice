@@ -1,6 +1,6 @@
-package com.portfolio.foodcatalogue.dto;
+package com.portfolio.foodcatalog.dto;
 
-import com.portfolio.foodcatalogue.entity.FoodItem;
+import com.portfolio.foodcatalog.entity.FoodItem;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,7 +10,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class FoodCataloguePage {
+public class FoodCatalogPage {
     private List<FoodItem> items;
     private Restaurant restaurant;
 }

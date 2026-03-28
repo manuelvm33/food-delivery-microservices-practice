@@ -1,6 +1,6 @@
-package com.portfolio.foodcatalogue.repo;
+package com.portfolio.foodcatalog.repo;
 
-import com.portfolio.foodcatalogue.entity.FoodItem;
+import com.portfolio.foodcatalog.entity.FoodItem;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -3,6 +3,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { FoodCatalogPage } from '../../features/restaurants/models/food-catalog-page.model';
 
 @Injectable({
   providedIn: 'root',
@@ -12,8 +13,8 @@ export class FoodItemService {
 
   private readonly http = inject(HttpClient);
 
-  getFoodItemsByRestaurantId(restaurantId: number): Observable<any[]> {
-    return this.http.get<any[]>(`${this.baseUrl}/fetchRestaurantAndFoodItemById/${restaurantId}`)
+  getFoodItemsByRestaurantId(restaurantId: number): Observable<FoodCatalogPage> {
+    return this.http.get<FoodCatalogPage>(`${this.baseUrl}/fetchRestaurantAndFoodItemsById/${restaurantId}`)
     .pipe(
       catchError(this.handleError)
     );

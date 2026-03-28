@@ -1,7 +1,7 @@
-package com.portfolio.foodcatalogue.mapping;
+package com.portfolio.foodcatalog.mapping;
 
-import com.portfolio.foodcatalogue.dto.FoodItemDTO;
-import com.portfolio.foodcatalogue.entity.FoodItem;
+import com.portfolio.foodcatalog.dto.FoodItemDTO;
+import com.portfolio.foodcatalog.entity.FoodItem;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 

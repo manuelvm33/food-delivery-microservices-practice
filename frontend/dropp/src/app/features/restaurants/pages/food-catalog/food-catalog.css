@@ -1,0 +1,21 @@
+/* Only rules that Tailwind v4 utilities cannot express */
+
+/* Radial glow blob in the hero – requires multi-stop radial-gradient composition */
+.hero-glow {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 80% at 80% 50%, rgba(249, 115, 22, 0.15) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 50% at 15% 20%, rgba(249, 115, 22, 0.08) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+/* Slide-up entrance for the sticky bar */
+@keyframes slide-up {
+  from { transform: translateY(100%); opacity: 0; }
+  to   { transform: translateY(0);   opacity: 1; }
+}
+
+.sticky-bar {
+  animation: slide-up 0.3s ease;
+}

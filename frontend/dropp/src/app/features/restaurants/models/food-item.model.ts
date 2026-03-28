@@ -1,9 +1,9 @@
 export interface FoodItem {
     id: number;
-    itemName: string;
-    itemDescription: string;
+    name: string;
+    description: string;
     price: number;
     restaurantId: number;
-    isVegan: boolean;
+    vegan: boolean;
     quantity: number;
 }

@@ -1,10 +1,10 @@
-package com.portfolio.foodcatalogue;
+package com.portfolio.foodcatalog;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class FoodcatalogueMicroserviceApplicationTests {
+class FoodcatalogMicroserviceApplicationTests {
 
 	@Test
 	void contextLoads() {

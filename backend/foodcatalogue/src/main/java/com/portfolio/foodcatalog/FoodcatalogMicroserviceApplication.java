@@ -1,4 +1,4 @@
-package com.portfolio.foodcatalogue;
+package com.portfolio.foodcatalog;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -7,10 +7,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
-public class FoodcatalogueMicroserviceApplication {
+public class FoodcatalogMicroserviceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(FoodcatalogueMicroserviceApplication.class, args);
+		SpringApplication.run(FoodcatalogMicroserviceApplication.class, args);
 	}
 
 	@Bean

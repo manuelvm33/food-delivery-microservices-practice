@@ -1,23 +1,23 @@
-package com.portfolio.foodcatalogue.service;
+package com.portfolio.foodcatalog.service;
 
-import com.portfolio.foodcatalogue.dto.FoodCataloguePage;
-import com.portfolio.foodcatalogue.dto.FoodItemDTO;
-import com.portfolio.foodcatalogue.dto.Restaurant;
-import com.portfolio.foodcatalogue.entity.FoodItem;
-import com.portfolio.foodcatalogue.mapping.FoodItemMapper;
-import com.portfolio.foodcatalogue.repo.FoodItemRepo;
+import com.portfolio.foodcatalog.dto.FoodCatalogPage;
+import com.portfolio.foodcatalog.dto.FoodItemDTO;
+import com.portfolio.foodcatalog.dto.Restaurant;
+import com.portfolio.foodcatalog.entity.FoodItem;
+import com.portfolio.foodcatalog.mapping.FoodItemMapper;
+import com.portfolio.foodcatalog.repo.FoodItemRepo;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
 @Service
-public class FoodCatalogueService {
-
+public class FoodCatalogService {
+    private final String RESTAURANT_SERVICE_URL = "https://RESTAURANT-SERVICE/restaurant/fetchRestaurantById/";
     private FoodItemRepo foodItemRepo;
 
     private RestTemplate restTemplate;
-    public FoodCatalogueService(FoodItemRepo foodItemRepo, RestTemplate restTemplate){
+    public FoodCatalogService(FoodItemRepo foodItemRepo, RestTemplate restTemplate){
         this.foodItemRepo = foodItemRepo;
         this.restTemplate = restTemplate;
     }
@@ -27,7 +27,7 @@ public class FoodCatalogueService {
         return FoodItemMapper.INSTANCE.mapFoodItemToFoodItemDTO(foodItem);
     }
 
-    public FoodCataloguePage fetchFoodCataloguePageDetails(Integer restaurantId) {
+    public FoodCatalogPage fetchFoodCataloguePageDetails(Integer restaurantId) {
         List<FoodItem> foodItems = fetchFoodItemList(restaurantId);
         Restaurant restaurant = fetchRestaurantDetailsFromRestaurant(restaurantId);
         return createRestaurantCataloguePage(foodItems, restaurant);
@@ -38,10 +38,10 @@ public class FoodCatalogueService {
     }
 
     private Restaurant fetchRestaurantDetailsFromRestaurant(Integer restaurantId){
-        return restTemplate.getForObject("https://RESTAURANT-SERVICE/restaurant/fetchRestaurantById/" + restaurantId, Restaurant.class);
+        return restTemplate.getForObject(RESTAURANT_SERVICE_URL + restaurantId, Restaurant.class);
     }
 
-    private FoodCataloguePage createRestaurantCataloguePage(List<FoodItem> foodItems, Restaurant restaurant){
-        return new FoodCataloguePage(foodItems,restaurant);
+    private FoodCatalogPage createRestaurantCataloguePage(List<FoodItem> foodItems, Restaurant restaurant){
+        return new FoodCatalogPage(foodItems,restaurant);
     }
 }

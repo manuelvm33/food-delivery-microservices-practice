@@ -1,4 +1,4 @@
-package com.portfolio.foodcatalogue.entity;
+package com.portfolio.foodcatalog.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -20,7 +20,8 @@ public class FoodItem {
     private String name;
     private String description;
     private double price;
-    private boolean isVegan;
+    @Column(name = "is_vegan")
+    private boolean vegan;
     private Long restaurantId;
     @Column(nullable = false, columnDefinition = "INT DEFAULT 0")
     private Integer quantity;

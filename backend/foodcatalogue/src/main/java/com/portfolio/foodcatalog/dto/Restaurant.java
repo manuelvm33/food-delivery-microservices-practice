@@ -1,4 +1,4 @@
-package com.portfolio.foodcatalogue.dto;
+package com.portfolio.foodcatalog.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

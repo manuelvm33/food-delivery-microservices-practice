@@ -13,6 +13,6 @@ export class RestaurantCard {
   @Input() restaurant!: Restaurant;
 
   order(id: number) {
-    this.router.navigate(['/food-cataloge', id]);
+    this.router.navigate(['/food-catalog', id]);
   }
 }
