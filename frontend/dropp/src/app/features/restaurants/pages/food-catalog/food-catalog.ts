@@ -5,6 +5,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { FoodCatalogPage } from '../../models/food-catalog-page.model';
 import { Restaurant } from '../../models/restaurant.model';
 import { ItemCard } from '../../components/item-card/item-card';
+import { FoodItem } from '../../models/food-item.model';
 
 @Component({
   selector: 'app-food-catalog',
@@ -23,7 +24,7 @@ export class FoodCatalog {
     this.foodItemService.getFoodItemsByRestaurantId(Number(this.restaurantId)),
     {
       initialValue: {
-        items: [],
+        items: [] as FoodItem[],
         restaurant: {} as Restaurant
       } as FoodCatalogPage
     }
@@ -43,12 +44,15 @@ export class FoodCatalog {
   });
 
   readonly orderSummary = computed(() => {
+    const quantities = this.quantities();
     return {
       restaurantId: this.restaurantId,
-      items: Array.from(this.quantities().entries()).map(([id, quantity]) => ({
-        id,
-        quantity
-      })),
+      items: this.foodCatalog().items
+        .filter(item => (quantities.get(item.id) ?? 0) > 0)
+        .map(item => ({
+          ...item,
+          quantity: quantities.get(item.id) ?? 0
+        })),
       total: this.cartTotal()
     };
   });
@@ -67,6 +71,5 @@ export class FoodCatalog {
 
   checkout(): void {
     this.router.navigate(['/order-summary'], { queryParams: { data: JSON.stringify(this.orderSummary()) } });
-
   }
 }

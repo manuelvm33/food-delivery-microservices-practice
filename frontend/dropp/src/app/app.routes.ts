@@ -17,5 +17,11 @@ export const routes: Routes = [
         loadComponent: () =>
             import('./features/restaurants/pages/food-catalog/food-catalog')
                 .then(m => m.FoodCatalog)
+    },
+    {
+        path: 'order-summary',
+        loadComponent: () =>
+            import('./features/restaurants/pages/order-summary/order-summary')
+                .then(m => m.OrderSummary)
     }
 ];

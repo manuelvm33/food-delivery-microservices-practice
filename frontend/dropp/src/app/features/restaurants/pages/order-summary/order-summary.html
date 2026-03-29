@@ -1,0 +1,45 @@
+<div class="max-w-3xl mx-auto px-4 py-12">
+  <h1 class="text-3xl md:text-4xl font-bold text-center text-dropp-dark mb-10">Order Summary</h1>
+
+  <div class="overflow-x-auto">
+    <table class="w-full text-left border-collapse">
+      <thead>
+        <tr class="bg-gray-100 text-dropp-dark">
+          <th class="py-4 px-6 font-semibold border-b border-gray-200">Item</th>
+          <th class="py-4 px-6 font-semibold border-b border-gray-200 text-center">Quantity</th>
+          <th class="py-4 px-6 font-semibold border-b border-gray-200 text-right">Price</th>
+        </tr>
+      </thead>
+      <tbody class="text-gray-700">
+        @for (item of orderSummary()?.items; track $index) {
+          <tr class="border-b border-gray-200">
+            <td class="py-4 px-6">{{ item.name }}</td>
+            <td class="py-4 px-6 text-center">{{ item.quantity }}</td>
+            <td class="py-4 px-6 text-right">$ {{ item.price }}</td>
+          </tr>
+        }
+      </tbody>
+      <tfoot>
+        <tr class="bg-gray-100 text-dropp-dark font-bold text-lg">
+          <td colspan="2" class="py-4 px-6 text-center md:text-right">Total</td>
+          <td class="py-4 px-6 text-right">$ {{ orderSummary()?.total }}</td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+
+  <div class="mt-10 flex justify-center">
+    <button 
+    class="bg-gray-500 hover:opacity-90 transition-opacity text-white font-semibold py-3 px-10 rounded shadow-md mr-4"
+    (click)="backToRestaurant()">
+      Back to Restaurant
+    </button>
+
+    <button 
+    class="bg-color-dropp-orange hover:opacity-90 transition-opacity text-white font-semibold py-3 px-10 rounded shadow-md"
+    (click)="placeOrder()"
+    >
+      Place Order
+    </button>
+  </div>
+</div>

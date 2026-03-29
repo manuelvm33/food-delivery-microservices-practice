@@ -5,3 +5,7 @@
     --color-dropp-dark: #0F0F0F;
   }
 }
+
+.bg-color-dropp-orange {
+  background-color: var(--color-dropp-orange);
+}
