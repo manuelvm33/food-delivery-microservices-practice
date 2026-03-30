@@ -11,6 +11,7 @@ import org.springframework.web.client.RestTemplate;
 
 @Service
 public class OrderService {
+    private static final String USER_SERVICE_URL = "http://USER-SERVICE/user/";
     private OrderRepo orderRepo;
 
     private SequenceGenerator sequenceGenerator;
@@ -31,6 +32,6 @@ public class OrderService {
     }
 
     private UserDto fetchDetailsFromUserId(Integer userId) {
-        return restTemplate.getForObject("http://USER-SERVICE/user/" + userId,UserDto.class);
+        return restTemplate.getForObject( USER_SERVICE_URL + userId,UserDto.class);
     }
 }
