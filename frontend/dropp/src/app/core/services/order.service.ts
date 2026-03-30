@@ -6,7 +6,7 @@ import { environment } from '../../../environments/environment';
   providedIn: 'root',
 })
 export class OrderService {
-  private readonly baseUrl = environment.api.order;
+  private readonly baseUrl = environment.api.order + '/order';
   private readonly http = inject(HttpClient);
 
   private readonly httpOptions = {
@@ -14,7 +14,8 @@ export class OrderService {
       'Content-Type': 'application/json',
     }),
   };
-  saveOrder(order: any) {
-    return this.http.post(this.baseUrl, order);
+
+  createOrder(order: any) {
+    return this.http.post(`${this.baseUrl}/saveOrder`, order, this.httpOptions);
   }
 }

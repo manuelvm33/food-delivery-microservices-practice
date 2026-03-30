@@ -11,21 +11,16 @@ import { CurrencyPipe } from '@angular/common';
 })
 export class ItemCard {
   @Input() foodItem!: FoodItem;
+  @Input() quantity: number = 0;
   @Output() quantityChange = new EventEmitter<{ id: number; quantity: number }>();
 
-  get quantity(): number {
-    return this.foodItem.quantity ?? 0;
-  }
-
   increment(): void {
-    this.foodItem = { ...this.foodItem, quantity: this.quantity + 1 };
-    this.quantityChange.emit({ id: this.foodItem.id, quantity: this.foodItem.quantity });
+    this.quantityChange.emit({ id: this.foodItem.id, quantity: this.quantity + 1 });
   }
 
   decrement(): void {
     if (this.quantity > 0) {
-      this.foodItem = { ...this.foodItem, quantity: this.quantity - 1 };
-      this.quantityChange.emit({ id: this.foodItem.id, quantity: this.foodItem.quantity });
+      this.quantityChange.emit({ id: this.foodItem.id, quantity: this.quantity - 1 });
     }
   }
 }
