@@ -1,4 +1,4 @@
-package com.porflio.order.dto;
+package com.drop.order.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,11 +7,12 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserDto {
+public class RestaurantDto {
     private Long id;
-    private String userName;
-    private String userPassword;
-    private String email;
+    private String name;
     private String address;
     private String city;
+    private String restaurantDescription;
+    private String imageUrl;
+    private Double rating;
 }

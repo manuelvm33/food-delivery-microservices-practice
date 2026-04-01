@@ -1,4 +1,4 @@
-package com.porflio.order.entity;
+package com.drop.order.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

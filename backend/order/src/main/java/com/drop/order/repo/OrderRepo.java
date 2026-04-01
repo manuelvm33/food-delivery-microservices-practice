@@ -1,6 +1,6 @@
-package com.porflio.order.repo;
+package com.drop.order.repo;
 
-import com.porflio.order.entity.Order;
+import com.drop.order.entity.Order;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 

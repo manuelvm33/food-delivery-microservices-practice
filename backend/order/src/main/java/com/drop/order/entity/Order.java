@@ -1,8 +1,8 @@
-package com.porflio.order.entity;
+package com.drop.order.entity;
 
-import com.porflio.order.dto.FoodItemDto;
-import com.porflio.order.dto.RestaurantDto;
-import com.porflio.order.dto.UserDto;
+import com.drop.order.dto.RestaurantDto;
+import com.drop.order.dto.FoodItemDto;
+import com.drop.order.dto.UserDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

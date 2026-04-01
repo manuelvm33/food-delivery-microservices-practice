@@ -1,4 +1,4 @@
-package com.porflio.order.dto;
+package com.drop.order.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,9 +9,8 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class OrderDto {
-    private Long id;
+public class OrderFrontDto {
     private List<FoodItemDto> foodItemsList;
+    private Integer userId;
     private RestaurantDto restaurant;
-    private UserDto userDto;
 }

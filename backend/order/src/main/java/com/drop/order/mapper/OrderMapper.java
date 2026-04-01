@@ -1,7 +1,7 @@
-package com.porflio.order.mapper;
+package com.drop.order.mapper;
 
-import com.porflio.order.dto.OrderDto;
-import com.porflio.order.entity.Order;
+import com.drop.order.dto.OrderDto;
+import com.drop.order.entity.Order;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
